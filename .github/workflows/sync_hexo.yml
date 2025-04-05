@@ -41,11 +41,11 @@ jobs:
 
       - name: Sync files from obsidian/hexo to hexo/source/_posts
         run: |
-          rsync -av --delete blogs/hexo hexo/source/_posts/
+          rsync -av blogs/hexo/ hexo/source/_posts/
       # 提交更改并推送到 HexoBlog 仓库
       - name: Commit and push changes to HexoBlog repository
         run: |
           cd hexo
           git add .
           git commit -m "Sync obsidian to hexo at $(TZ='Asia/Shanghai' date '+%Y-%m-%d %H:%M:%S')"
-          git push origin hexo
+          git push origin main
