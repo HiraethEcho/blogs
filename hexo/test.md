@@ -14,7 +14,7 @@ This is a test post.
 
 write this in ob, after adding deploy key in hexo repo
 
-fuck
+fuck this
 
 ## callouts
 more:
