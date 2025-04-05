@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: hiraethecho/blogs
-          path: blogs
+          path: obsidian
 
       # - name: Checkout hexo repository
       #   uses: actions/checkout@v3
@@ -45,11 +45,13 @@ jobs:
 
       - name: Sync files from obsidian/hexo to hexo/source/_posts
         run: |
-          rsync -av blogs/hexo/ hexo/source/_posts/
+          rsync -av obsidian/hexo/ ~hexo/source/_posts/
       # 提交更改并推送到 HexoBlog 仓库
       - name: Commit and push changes to HexoBlog repository
         run: |
-          cd hexo
+          cd ~
+          ls
+          cd ~/hexo
           git add .
           git commit -m "Sync obsidian to hexo"
           git push origin main
