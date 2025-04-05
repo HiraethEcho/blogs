@@ -12,7 +12,7 @@ archive: true
 # test
 This is a test post.
 
-write this in ob, after adding deploy key in hexo repo
+write this in ob, after adding deploy key in hexo repo, manual clone hexo
 
 ## callouts
 more:
