@@ -45,13 +45,10 @@ jobs:
 
       - name: Sync files from obsidian/wiki to wiki/doc
         run: |
-          rsync -av obsidian/hexo/ ~/wiki/docs
+          rsync -av obsidian/wiki/ ~/wiki/docs/
 
       - name: Commit and push changes to wiki repository
         run: |
-          cd ~
-          ls ~/work
-          ls ~/runner
           cd ~/wiki
           git add .
           git commit -m "Sync obsidian to wiki"
