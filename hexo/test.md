@@ -12,7 +12,7 @@ archive: true
 # test
 This is a test post.
 
-in ob
+write this in ob
 
 ## callouts
 more:
