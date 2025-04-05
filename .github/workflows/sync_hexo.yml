@@ -40,7 +40,7 @@ jobs:
           git config --global i18n.logOutputEncoding utf-8 
 
       - name: clone
-      - run: |
+        run: |
           git clone git@github.com:hiraethecho/hexo ~/hexo
 
       - name: Sync files from obsidian/hexo to hexo/source/_posts
