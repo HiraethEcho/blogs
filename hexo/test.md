@@ -12,6 +12,8 @@ archive: true
 # test
 This is a test post.
 
+in ob
+
 ## callouts
 more:
 > [!NOTE]
