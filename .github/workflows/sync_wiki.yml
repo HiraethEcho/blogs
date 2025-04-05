@@ -1,0 +1,58 @@
+name: Sync wiki to wiki/source_posts
+
+on:
+  push:
+    paths:
+      - 'wiki/**' # 监听文件夹内的文件变化，没有变化不会触发action
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:      
+      # 检出 obsidian 仓库的代码
+      - name: Checkout blogs repository
+        uses: actions/checkout@v3
+        with:
+          repository: hiraethecho/blogs
+          path: obsidian
+
+      # - name: Checkout hexo repository
+      #   uses: actions/checkout@v3
+      #   with:
+      #     repository: hiraethecho/hexo
+      #     path: hexo
+
+      # 设置 Git 配置（用户名和ssh私钥）
+      - name: Set up Git
+        env:
+          ACTIONS_KEY: ${{ secrets.OB_WIKI_PRI }}
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$ACTIONS_KEY" > ~/.ssh/id_rsa
+          chmod 700 ~/.ssh
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git config --global user.name "obsidian"
+          git config --global user.email "wyz2016zxc@icloud.com"
+          git config --global core.quotepath false
+          git config --global i18n.commitEncoding utf-8 
+          git config --global i18n.logOutputEncoding utf-8 
+
+      - name: clone
+        run: |
+          git clone git@github.com:hiraethecho/wiki ~/wiki
+
+      - name: Sync files from obsidian/wiki to wiki/doc
+        run: |
+          rsync -av obsidian/hexo/ ~/wiki/docs
+
+      - name: Commit and push changes to wiki repository
+        run: |
+          cd ~
+          ls ~/work
+          ls ~/runner
+          cd ~/wiki
+          git add .
+          git commit -m "Sync obsidian to wiki"
+          git push origin main
