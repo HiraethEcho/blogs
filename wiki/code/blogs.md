@@ -44,6 +44,7 @@ jobs:
           path: obsidian
       - name: commit
         run: |
+          cd obsidian
           git log -1 --pretty=%B > ~/commit
 
       # 设置 Git 配置（用户名和ssh私钥）

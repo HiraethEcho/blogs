@@ -18,6 +18,7 @@ jobs:
           path: obsidian
       - name: commit
         run: |
+          cd obsidian
           git log -1 --pretty=%B > ~/commit
 
       # - name: Checkout hexo repository
