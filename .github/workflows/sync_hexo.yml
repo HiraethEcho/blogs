@@ -16,6 +16,9 @@ jobs:
         with:
           repository: hiraethecho/blogs
           path: obsidian
+      - name: commit
+        run: |
+          git log -1 --pretty=%B > ~/commit
 
       # - name: Checkout hexo repository
       #   uses: actions/checkout@v3
@@ -53,5 +56,5 @@ jobs:
           ls
           cd ~/hexo
           git add .
-          git commit -m "Sync obsidian to hexo"
+          git commit -m "Sync obsidian to hexo $(cat ~/commit)"
           git push origin main
