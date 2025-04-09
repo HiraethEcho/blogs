@@ -8,7 +8,7 @@ This is my Obsidian Vault.
 
 ## List
 ```dataview
-TABLE title, excerpt, tags, version
+TABLE title, tags, version
 FROM "hexo"
 SORT version DESC
 ```
